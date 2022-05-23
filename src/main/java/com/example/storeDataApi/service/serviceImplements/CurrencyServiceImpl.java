@@ -18,7 +18,7 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public Currency save(Currency currency) {
-        Currency oldCurrency = currencyRepository.findBycurrencyName(currency.getCurrencyName())
+        Currency oldCurrency = currencyRepository.findByCurrencyName(currency.getCurrencyName())
                 .orElseThrow(()-> new CurrencyNotFoundException("Essa moeda nao foi encontrada"));
         oldCurrency.upDateFrom(currency);
         return currencyRepository.save(oldCurrency);
@@ -26,7 +26,7 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public Currency getCurrency(String name) {
-       return currencyRepository.findBycurrencyName(name)
+       return currencyRepository.findByCurrencyName(name)
                .orElseThrow(()-> new CurrencyNotFoundException("Essa moeda nao foi encontrada"));
     }
 

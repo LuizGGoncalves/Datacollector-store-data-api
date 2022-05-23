@@ -17,11 +17,11 @@ public class CurrencyController {
     @ApiIgnore
     @PostMapping("/")
     public ResponseEntity<Currency> reciveCurrency(@RequestBody Currency currency) {
-        return new ResponseEntity<Currency>(currencyService.save(currency), HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(currencyService.save(currency));
     }
 
     @GetMapping("/currency/{name}")
     public ResponseEntity<Currency> getCurrency(@PathVariable(value = "name") String name){
-        return new ResponseEntity<Currency>(currencyService.getCurrency(name),HttpStatus.ACCEPTED);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(currencyService.getCurrency(name));
     }
 }

@@ -35,7 +35,6 @@ public class Currency {
         this.brlClose = brlClose;
         this.usdClose = usdClose;
     }
-
     public void upDateFrom(Currency newCurrency){
         Optional<Currency> optional = Optional.ofNullable(newCurrency);
         optional.map(Currency::getBrlOpen).ifPresent(this::setBrlOpen);
@@ -43,5 +42,4 @@ public class Currency {
         optional.map(Currency::getBrlClose).ifPresent(this::setBrlClose);
         optional.map(Currency::getUsdClose).ifPresent(this::setUsdClose);
     }
-
 }

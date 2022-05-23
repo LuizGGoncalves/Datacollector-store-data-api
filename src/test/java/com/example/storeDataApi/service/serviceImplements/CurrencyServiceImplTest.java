@@ -40,7 +40,7 @@ class CurrencyServiceImplTest {
 
         //Mockito.doReturn(currency1).when(currencyRepository).findBycurrencyName(currencyName);
 
-        Mockito.when(currencyRepository.findBycurrencyName(ArgumentMatchers.eq(currencyName))).thenReturn(currency1);
+        Mockito.when(currencyRepository.findByCurrencyName(ArgumentMatchers.eq(currencyName))).thenReturn(currency1);
         Mockito.when(currencyRepository.save(ArgumentMatchers.refEq(currency2))).thenReturn(currency2);
         Currency result = currencyService.save(currency2);
         Assertions.assertEquals(currency2,result);
@@ -50,7 +50,7 @@ class CurrencyServiceImplTest {
     void getCurrency() throws CurrencyNotFoundException {
         String currencyName = "BitCoin";
         Optional<Currency> currency1 = Optional.of(new Currency(1L,"BitCoin",30d,35d,40d,45d));
-        Mockito.when(currencyRepository.findBycurrencyName(ArgumentMatchers.eq(currencyName))).thenReturn(currency1);
+        Mockito.when(currencyRepository.findByCurrencyName(ArgumentMatchers.eq(currencyName))).thenReturn(currency1);
 
         Currency result = currencyService.getCurrency(currencyName);
         Assertions.assertEquals(currency1.get(),result);
